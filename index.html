@@ -43,14 +43,22 @@
 		<tr>
 			<td>Epsilon</td>
 			<td><textarea class="parameterForm" cols="5" rows="1" onkeyup="(function(elt){
-				//
+				if(!isNaN(elt.value)) {
+					if(Number(elt.value) > 0) {
+						epsilon = Number(elt.value);
+					}
+				}
 			})(this)"></textarea></td>
 			<td>Description TODO</td>
 		</tr>
 		<tr>
 			<td>Min Cluster Size</td>
 			<td><textarea class="parameterForm" cols="5" rows="1" onkeyup="(function(elt){
-				//
+				if(!isNaN(elt.value)) {
+					if(Number(elt.value) > 0) {
+						minClusterSize = Math.ceil(Number(elt.value));
+					}
+				}
 			})(this)"></textarea></td>
 			<td>Description TODO</td>
 		</tr>

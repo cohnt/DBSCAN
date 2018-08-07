@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DBSCAN</title>
+	<style>
+		div {
+			display: inline-block;
+		}
+		.controlButton {
+			padding: 10px;
+		}
+		th {
+			padding: 0px 8px;
+			text-align: left;
+		}
+		td {
+			padding: 2px 8px;
+		}
+		.narrowRows tr td {
+			padding: 0px 8px;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Instructions</h1>
+<p>This is an implementation of the DBSCAN clustering algorithm. Click anywhere on the canvas to add a datapoint at that location. Then, click run to run the clustering algorithm.</p>
+
+<table>
+	<tbody class="narrowRows">
+		<tr>
+			<th>Parameter Name</th>
+			<th>Parameter Value</th>
+			<th>Description</th>
+		</tr>
+		<!-- <tr>
+			<td>Parameter</td>
+			<td><textarea class="parameterForm" cols="5" rows="1" onkeyup="(function(elt){
+				//
+			})(this)"></textarea></td>
+			<td>Description</td>
+		</tr> -->
+		<tr>
+			<td>Epsilon</td>
+			<td><textarea class="parameterForm" cols="5" rows="1" onkeyup="(function(elt){
+				//
+			})(this)"></textarea></td>
+			<td>Description TODO</td>
+		</tr>
+		<tr>
+			<td>Min Cluster Size</td>
+			<td><textarea class="parameterForm" cols="5" rows="1" onkeyup="(function(elt){
+				//
+			})(this)"></textarea></td>
+			<td>Description TODO</td>
+		</tr>
+	</tbody>
+</table>
+
+<br>
+
+<div class="controlButton" style="background-color: #ff9999" id="clear">Clear</div>
+<div class="controlButton" style="background-color: #9999ff" id="run">Run</div>
+<div class="controlButton" style="background-color: #ff9999" id="reset">Reset</div>
+
+<br><br>
+
+<canvas id="canvas" style="border: 1px dotted black; background-color: #eeeeee"></canvas>
+
+<script type="text/javascript" source="script.js"></script>
+
+</body>
+</html>

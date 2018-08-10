@@ -45,7 +45,6 @@ function setup() {
 
 	document.getElementById("clear").addEventListener("click", clear);
 	document.getElementById("run").addEventListener("click", run);
-	document.getElementById("reset").addEventListener("click", reset);
 
 	canvas.addEventListener("mousemove", function(event) { mouseMoveCanvas(event); });
 	canvas.addEventListener("click", mouseClickCanvas);
@@ -55,9 +54,6 @@ function clear() {
 	//
 }
 function run() {
-	//
-}
-function reset() {
 	//
 }
 

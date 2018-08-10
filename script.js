@@ -4,7 +4,12 @@
 
 var epsilon = 10;
 var minClusterSize = 5;
-var colorRule = { unassigned: "black" };
+var colorRule = {
+	unassigned: "black",
+	core: "#ff0000",
+	border: "#0000ff",
+	noise: "grey"
+};
 
 ///////////////////////////////////////////
 /// GLOBAL VARIABLES
@@ -58,6 +63,7 @@ function run() {
 	console.log("Running...");
 	clearIDs();
 	dbscan();
+	console.log("Done!");
 	for(var i=0; i<points.length; ++i) {
 		points[i].draw();
 	}

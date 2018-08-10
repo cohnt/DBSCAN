@@ -12,6 +12,9 @@ var colorRule = { unassigned: "black" };
 
 var canvas;
 var ctx;
+var points = [];
+var mouseInCanvas = false;
+var mouseLoc = [];
 
 ///////////////////////////////////////////
 /// CLASSES
@@ -43,6 +46,9 @@ function setup() {
 	document.getElementById("clear").addEventListener("click", clear);
 	document.getElementById("run").addEventListener("click", run);
 	document.getElementById("reset").addEventListener("click", reset);
+
+	canvas.addEventListener("mousemove", function(event) { mouseMoveCanvas(event); });
+	canvas.addEventListener("click", mouseClickCanvas);
 }
 
 function clear() {
@@ -55,6 +61,16 @@ function reset() {
 	//
 }
 
+function mouseMoveCanvas(event) {
+	var rect = canvas.getBoundingClientRect();
+	var x = event.clientX - rect.left;
+	var y = event.clientY - rect.top;
+	mouseLoc = [x, y];
+}
+function mouseClickCanvas() {
+	points.push(new Point(mouseLoc));
+	points[points.length-1].draw();
+}
 
 function clearScreen() {
 	//

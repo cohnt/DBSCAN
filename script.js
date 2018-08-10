@@ -54,6 +54,8 @@ function setup() {
 
 	canvas.addEventListener("mousemove", function(event) { mouseMoveCanvas(event); });
 	canvas.addEventListener("click", mouseClickCanvas);
+
+	drawLengthMarker();
 }
 
 function clear() {
@@ -66,6 +68,7 @@ function run() {
 	clearIDs();
 	dbscan();
 	console.log("Done!");
+	drawLengthMarker();
 	for(var i=0; i<points.length; ++i) {
 		points[i].draw();
 	}
@@ -85,6 +88,22 @@ function mouseClickCanvas() {
 function clearScreen() {
 	//
 	ctx.clearRect(0, 0, 800, 500);
+}
+function drawLengthMarker() {
+	ctx.beginPath();
+	ctx.moveTo(10, 10);
+	ctx.lineTo(10, 20);
+	ctx.stroke();
+
+	ctx.beginPath();
+	ctx.moveTo(10+epsilon, 10);
+	ctx.lineTo(10+epsilon, 20);
+	ctx.stroke();
+
+	ctx.beginPath();
+	ctx.moveTo(10, 15);
+	ctx.lineTo(10+epsilon, 15);
+	ctx.stroke();
 }
 
 function clearIDs() {

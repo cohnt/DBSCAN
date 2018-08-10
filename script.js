@@ -2,7 +2,7 @@
 /// CONSTANTS
 ///////////////////////////////////////////
 
-var epsilon = 10;
+var epsilon = 50;
 var minClusterSize = 5;
 var colorRule = {
 	unassigned: "black",
@@ -10,6 +10,7 @@ var colorRule = {
 	border: "#0000ff",
 	noise: "grey"
 };
+var pointSize = 2;
 
 ///////////////////////////////////////////
 /// GLOBAL VARIABLES
@@ -34,7 +35,7 @@ function Point(loc) {
 		ctx.fillStyle = colorRule[this.type];
 		ctx.beginPath();
 		ctx.moveTo(loc[0], loc[1]);
-		ctx.arc(loc[0], loc[1], 1, 0, 2*Math.PI, true);
+		ctx.arc(loc[0], loc[1], pointSize, 0, 2*Math.PI, true);
 		ctx.closePath();
 		ctx.fill();
 	}

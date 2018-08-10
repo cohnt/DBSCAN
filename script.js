@@ -31,7 +31,7 @@ function Point(loc) {
 	this.cID = -1;
 
 	this.draw = function() {
-		ctx.fillStyle = colorRule.unassigned;
+		ctx.fillStyle = colorRule[this.type];
 		ctx.beginPath();
 		ctx.moveTo(loc[0], loc[1]);
 		ctx.arc(loc[0], loc[1], 1, 0, 2*Math.PI, true);
@@ -82,7 +82,7 @@ function mouseClickCanvas() {
 
 function clearScreen() {
 	//
-	ctx.clearRect(0, 0, 500, 500);
+	ctx.clearRect(0, 0, 800, 500);
 }
 
 function clearIDs() {

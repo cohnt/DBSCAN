@@ -9,8 +9,8 @@ var unassignedColor = "black";
 var pointSize = {
 	unassigned: 2,
 	noise: 2,
-	border: 2,
-	core: 3
+	border: 3.5,
+	core: 5
 };
 
 ///////////////////////////////////////////
@@ -121,6 +121,7 @@ function clearIDs() {
 		points[i].cID = -1;
 		points[i].type = "unassigned";
 	}
+	clusterColors = [];
 }
 function dbscan() {
 	var cID = 0;

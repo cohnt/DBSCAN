@@ -54,7 +54,12 @@ function clear() {
 	//
 }
 function run() {
-	//
+	clearScreen();
+	console.log("Running...");
+	dbscan();
+	for(var i=0; i<points.length; ++i) {
+		points[i].draw();
+	}
 }
 
 function mouseMoveCanvas(event) {
@@ -71,6 +76,10 @@ function mouseClickCanvas() {
 function clearScreen() {
 	//
 	ctx.clearRect(0, 0, 500, 500);
+}
+
+function dbscan() {
+	//
 }
 
 ///////////////////////////////////////////

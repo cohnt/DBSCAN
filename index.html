@@ -46,6 +46,11 @@
 				if(!isNaN(elt.value)) {
 					if(Number(elt.value) > 0) {
 						epsilon = Number(elt.value);
+						clearScreen();
+						for(var i=0; i<points.length; ++i) {
+							points[i].draw();
+						}
+						drawLengthMarker();
 					}
 				}
 			})(this)">50</textarea></td>

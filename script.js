@@ -4,13 +4,14 @@
 
 var epsilon = 50;
 var minClusterSize = 5;
-var colorRule = {
-	unassigned: "black",
-	core: "#ff0000",
-	border: "#0000ff",
-	noise: "grey"
+var noiseColor = "grey";
+var unassignedColor = "black";
+var pointSize = {
+	unassigned: 2,
+	noise: 2,
+	border: 2,
+	core: 3
 };
-var pointSize = 2;
 
 ///////////////////////////////////////////
 /// GLOBAL VARIABLES
@@ -19,6 +20,7 @@ var pointSize = 2;
 var canvas;
 var ctx;
 var points = [];
+var clusterColors = [];
 var mouseInCanvas = false;
 var mouseLoc = [];
 
@@ -32,10 +34,18 @@ function Point(loc) {
 	this.cID = -1;
 
 	this.draw = function() {
-		ctx.fillStyle = colorRule[this.type];
+		if(this.type == "noise") {
+			ctx.fillStyle = noiseColor;
+		}
+		else if(this.type == "unassigned") {
+			ctx.fillStyle = unassignedColor;
+		}
+		else {
+			ctx.fillStyle = clusterColors[this.cID];
+		}
 		ctx.beginPath();
 		ctx.moveTo(loc[0], loc[1]);
-		ctx.arc(loc[0], loc[1], pointSize, 0, 2*Math.PI, true);
+		ctx.arc(loc[0], loc[1], pointSize[this.type], 0, 2*Math.PI, true);
 		ctx.closePath();
 		ctx.fill();
 	}
@@ -154,6 +164,10 @@ function dbscan() {
 			}
 		}
 	}
+	clusterColors.push(null);
+	for(var i=1; i<=cID; ++i) {
+		clusterColors.push(getRandColor(1));
+	}
 }
 function findNeighbors(points, point) {
 	var out = [];
@@ -167,6 +181,15 @@ function findNeighbors(points, point) {
 
 function dist(a, b) {
 	return Math.sqrt(Math.pow(a[0]-b[0], 2) + Math.pow(a[1]-b[1], 2));
+}
+
+function getRandColor(brightness){
+	// From https://stackoverflow.com/questions/1484506/random-color-generator
+	// Six levels of brightness from 0 to 5, 0 being the darkest
+	var rgb = [Math.random() * 256, Math.random() * 256, Math.random() * 256];
+	var mix = [brightness*51, brightness*51, brightness*51]; //51 => 255/5
+	var mixedrgb = [rgb[0] + mix[0], rgb[1] + mix[1], rgb[2] + mix[2]].map(function(x){ return Math.round(x/2.0)})
+	return "rgb(" + mixedrgb.join(",") + ")";
 }
 
 ///////////////////////////////////////////

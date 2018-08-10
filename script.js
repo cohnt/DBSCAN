@@ -57,7 +57,8 @@ function setup() {
 }
 
 function clear() {
-	//
+	points = [];
+	clearScreen();
 }
 function run() {
 	clearScreen();
